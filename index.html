@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Classic Games</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">GameHub</h1>
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="gameSearch" placeholder="Search games..." class="search-input">
+                        <button class="search-clear" id="searchClear">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Game Selection Page -->
+            <div class="game-selection" id="gameSelection">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Welcome to GameHub</h2>
+                    <p class="welcome-subtitle">Discover and play classic games</p>
+                </div>
+
+                <div class="games-grid" id="gamesGrid">
+                    <!-- Tetris Game Card -->
+                    <div class="game-card" data-game="tetris" data-search="tetris block puzzle">
+                        <div class="game-card-icon">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3 class="game-card-title">Tetris</h3>
+                            <p class="game-card-description">Classic block-stacking puzzle game</p>
+                            <div class="game-card-status available">
+                                <i class="fas fa-play"></i>
+                                <span>Play Now</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Snake Game Card -->
+                    <div class="game-card" data-game="snake" data-search="snake navigation grow">
+                        <div class="game-card-icon">
+                            <i class="fas fa-dragon"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3 class="game-card-title">Snake</h3>
+                            <p class="game-card-description">Navigate and grow your snake</p>
+                            <div class="game-card-status available">
+                                <i class="fas fa-play"></i>
+                                <span>Play Now</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2048 Game Card -->
+                    <div class="game-card" data-game="2048" data-search="2048 merge tiles puzzle">
+                        <div class="game-card-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3 class="game-card-title">2048</h3>
+                            <p class="game-card-description">Merge tiles to reach 2048</p>
+                            <div class="game-card-status available">
+                                <i class="fas fa-play"></i>
+                                <span>Play Now</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pong Game Card -->
+                    <div class="game-card" data-game="pong" data-search="pong paddle ball classic">
+                        <div class="game-card-icon">
+                            <i class="fas fa-table-tennis"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3 class="game-card-title">Pong</h3>
+                            <p class="game-card-description">Classic paddle and ball game</p>
+                            <div class="game-card-status available">
+                                <i class="fas fa-play"></i>
+                                <span>Play Now</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pac-Man Game Card -->
+                    <div class="game-card" data-game="pacman" data-search="pacman maze dots ghosts arcade">
+                        <div class="game-card-icon">
+                            <i class="fas fa-ghost"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3 class="game-card-title">Pac-Man</h3>
+                            <p class="game-card-description">Classic maze navigation game</p>
+                            <div class="game-card-status available">
+                                <i class="fas fa-play"></i>
+                                <span>Play Now</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Play Page -->
+            <div class="game-play" id="gamePlay" style="display: none;">
+                <!-- Back Button -->
+                <div class="back-button-container">
+                    <button class="back-btn" id="backBtn">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Games</span>
+                    </button>
+                </div>
+
+                <!-- Ad Banner Top -->
+                <div class="ad-banner ad-banner-top">
+                    <div class="ad-placeholder">
+                        <span>Ad Banner</span>
+                    </div>
+                </div>
+
+                <!-- Game Container -->
+                <div class="game-container">
+                    <div class="game-header">
+                        <h2 class="game-title">Tetris</h2>
+                        <div class="game-stats">
+                            <div class="stat">
+                                <span class="stat-label">Score</span>
+                                <span class="stat-value" id="score">0</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Level</span>
+                                <span class="stat-value" id="level">1</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Lines</span>
+                                <span class="stat-value" id="lines">0</span>
+                            </div>
+                            <div class="stat" id="highScoreStat" style="display: none;">
+                                <span class="stat-label">High Score</span>
+                                <span class="stat-value" id="highScore">0</span>
+                            </div>
+                            <div class="stat" id="bestScoreStat" style="display: none;">
+                                <span class="stat-label">Best</span>
+                                <span class="stat-value" id="bestScore">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game Canvas -->
+                    <div class="game-area">
+                        <canvas id="gameCanvas" width="300" height="600"></canvas>
+                        <div class="game-overlay" id="gameOverlay">
+                            <div class="overlay-content">
+                                <h3 id="overlayTitle">Game Over</h3>
+                                <p id="overlayMessage">Your score: <span id="finalScore">0</span></p>
+                                <button class="btn btn-primary" id="restartBtn">Play Again</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game Controls -->
+                    <div class="game-controls">
+                        <!-- Tetris Controls -->
+                        <div class="control-row" id="tetrisControls">
+                            <button class="control-btn" id="rotateBtn">Rotate</button>
+                            <button class="control-btn" id="leftBtn">←</button>
+                            <button class="control-btn" id="rightBtn">→</button>
+                        </div>
+                        <div class="control-row" id="tetrisControls2">
+                            <button class="control-btn" id="dropBtn">Drop</button>
+                            <button class="control-btn" id="pauseBtn">Pause</button>
+                        </div>
+
+                        <!-- Snake Controls -->
+                        <div class="control-row" id="snakeControls" style="display: none;">
+                            <button class="control-btn" id="upBtn">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+                        <div class="control-row" id="snakeControls2" style="display: none;">
+                            <button class="control-btn" id="leftBtnSnake">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="control-btn" id="downBtn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <button class="control-btn" id="rightBtnSnake">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="control-row" id="snakeControls3" style="display: none;">
+                            <button class="control-btn" id="pauseBtnSnake">Pause</button>
+                            <button class="control-btn" id="restartBtn">Restart</button>
+                        </div>
+
+                        <!-- 2048 Controls -->
+                        <div class="control-row" id="controls2048" style="display: none;">
+                            <button class="control-btn" id="upBtn2048">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+                        <div class="control-row" id="controls2048_2" style="display: none;">
+                            <button class="control-btn" id="leftBtn2048">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="control-btn" id="downBtn2048">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <button class="control-btn" id="rightBtn2048">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="control-row" id="controls2048_3" style="display: none;">
+                            <button class="control-btn" id="pauseBtn2048">Pause</button>
+                            <button class="control-btn" id="restartBtn2048">Restart</button>
+                        </div>
+
+                        <!-- Pong Controls -->
+                        <div class="control-row" id="pongControls" style="display: none;">
+                            <button class="control-btn" id="upBtnPong">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+                        <div class="control-row" id="pongControls2" style="display: none;">
+                            <button class="control-btn" id="downBtnPong">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="control-row" id="pongControls3" style="display: none;">
+                            <button class="control-btn" id="pauseBtnPong">Pause</button>
+                            <button class="control-btn" id="restartBtnPong">Restart</button>
+                        </div>
+
+                        <!-- Pac-Man Controls -->
+                        <div class="control-row" id="pacmanControls" style="display: none;">
+                            <button class="control-btn" id="upBtnPacman">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+                        <div class="control-row" id="pacmanControls2" style="display: none;">
+                            <button class="control-btn" id="leftBtnPacman">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="control-btn" id="downBtnPacman">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <button class="control-btn" id="rightBtnPacman">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="control-row" id="pacmanControls3" style="display: none;">
+                            <button class="control-btn" id="pauseBtnPacman">Pause</button>
+                            <button class="control-btn" id="restartBtnPacman">Restart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Banner Bottom -->
+                <div class="ad-banner ad-banner-bottom">
+                    <div class="ad-placeholder">
+                        <span>Ad Banner</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 GameHub - Classic Games</p>
+        </footer>
+    </div>
+
+    <script src="tetris.js"></script>
+    <script src="snake.js"></script>
+    <script src="2048.js"></script>
+    <script src="pong.js"></script>
+    <script src="pacman.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

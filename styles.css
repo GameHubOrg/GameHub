@@ -1,0 +1,792 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', monospace;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.header {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+}
+
+/* Search Styles */
+.search-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-box:focus-within {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.search-icon {
+    color: rgba(255, 255, 255, 0.7);
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.search-input {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-clear {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: none;
+}
+
+.search-clear:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.search-clear.visible {
+    display: block;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Game Selection Page */
+.game-selection {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.game-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.game-card:hover::before {
+    left: 100%;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.game-card-icon {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.game-card-icon i {
+    font-size: 3rem;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.3));
+}
+
+.game-card-content {
+    text-align: center;
+}
+
+.game-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.game-card-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.game-card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.game-card-status.available {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+.game-card-status.coming-soon {
+    background: linear-gradient(45deg, #ff8e0d, #ff6b6b);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 142, 13, 0.3);
+}
+
+.game-card.hidden {
+    display: none;
+}
+
+/* Game Play Page */
+.game-play {
+    animation: slideIn 0.3s ease-out;
+}
+
+.back-button-container {
+    margin-bottom: 1rem;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Ad Banner Styles */
+.ad-banner {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ad-placeholder {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    padding: 2rem;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Game Container */
+.game-container {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.game-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.game-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.game-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stat {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #4ecdc4;
+}
+
+/* Game Area */
+.game-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+#gameCanvas {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    max-width: 100%;
+    height: auto;
+}
+
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.game-overlay.active {
+    display: flex;
+}
+
+.overlay-content {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.overlay-content h3 {
+    margin-bottom: 1rem;
+    color: #ff6b6b;
+}
+
+.overlay-content p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+/* Game Controls */
+.game-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.control-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.control-btn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border: none;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+/* Snake-specific controls */
+#snakeControls .control-btn {
+    min-width: 100px;
+    padding: 1.2rem 1.5rem;
+}
+
+#snakeControls2 {
+    gap: 0.5rem;
+}
+
+#snakeControls2 .control-btn {
+    min-width: 80px;
+    padding: 1rem 1.2rem;
+}
+
+#snakeControls3 .control-btn {
+    min-width: 120px;
+}
+
+/* Pac-Man specific styles */
+#pacmanControls .control-btn {
+    min-width: 100px;
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+#pacmanControls .control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+#pacmanControls2 {
+    gap: 0.5rem;
+}
+
+#pacmanControls2 .control-btn {
+    min-width: 80px;
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+}
+
+#pacmanControls3 .control-btn {
+    min-width: 120px;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+}
+
+/* Button Styles */
+.btn {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border: none;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+}
+
+/* Footer */
+.footer {
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0.75rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .search-container {
+        max-width: 100%;
+    }
+
+    .main-content {
+        padding: 0.75rem;
+    }
+
+    .welcome-title {
+        font-size: 2rem;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .game-card {
+        padding: 1rem;
+    }
+
+    .game-card-icon i {
+        font-size: 2.5rem;
+    }
+
+    .game-title {
+        font-size: 1.5rem;
+    }
+
+    .game-stats {
+        gap: 1rem;
+    }
+
+    .stat {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .stat-value {
+        font-size: 1rem;
+    }
+
+    .control-row {
+        gap: 0.5rem;
+    }
+
+    .control-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        min-width: 70px;
+    }
+
+    #snakeControls .control-btn {
+        min-width: 80px;
+        padding: 1rem 1.2rem;
+    }
+
+    #gameCanvas {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .control-row {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .control-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    #snakeControls2 {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #snakeControls2 .control-btn {
+        flex: 1;
+        max-width: 80px;
+    }
+
+    .welcome-title {
+        font-size: 1.5rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .control-btn,
+    .nav-btn,
+    .btn,
+    .back-btn {
+        min-height: 44px;
+    }
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* 2048 Controls */
+#controls2048,
+#controls2048_2,
+#controls2048_3 {
+    display: none;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+#controls2048 .control-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+}
+
+#controls2048_2 .control-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+}
+
+#controls2048_3 .control-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+/* High score notification animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Pac-Man game canvas improvements */
+#gameCanvas {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.95);
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+#gameCanvas:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile optimizations for Pac-Man */
+@media (max-width: 768px) {
+    #gameCanvas {
+        border-radius: 10px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    #pacmanControls .control-btn {
+        min-width: 80px;
+        padding: 1rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    #pacmanControls2 .control-btn {
+        min-width: 60px;
+        padding: 0.8rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    #pacmanControls3 .control-btn {
+        min-width: 100px;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #gameCanvas {
+        border-radius: 8px;
+        border-width: 1px;
+    }
+    
+    #pacmanControls .control-btn {
+        min-width: 70px;
+        padding: 0.8rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    #pacmanControls2 .control-btn {
+        min-width: 50px;
+        padding: 0.7rem 0.8rem;
+        font-size: 0.7rem;
+    }
+    
+    #pacmanControls3 .control-btn {
+        min-width: 90px;
+        padding: 0.7rem 1rem;
+        font-size: 0.8rem;
+    }
+}
